@@ -2,7 +2,7 @@ import React from 'react';
 
 const HomeSingle = ({item}) => (
   <li>
-    {item.title}
+    {item.Id}
   </li>
 ); 
 
