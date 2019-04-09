@@ -1,7 +1,7 @@
 import React from 'react';
 
 const HomeSingle = ({item}) => (
-  <div className="col s4">
+  <div className="col s2">
     <div className="card">
       <div className="card-image">
         <img src={item.ThumbnailImage} alt={item.Description}/>
