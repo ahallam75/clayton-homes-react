@@ -11,7 +11,7 @@ class Homes extends Component {
     }
 
     componentDidMount() {
-      const url = 'https://fast-everglades-97829.herokuapp.com/homes'
+      const url = process.env.REACT_APP_CLAYTON_HOMES_API_KEY 
 
       // fetch(url)
       // .then((response) => {
@@ -45,9 +45,9 @@ class Homes extends Component {
 
   render() {
     return (
-      <ul className="row">
+      <div className="row">
         {this.renderItems()}
-      </ul>
+      </div>
     );
   }
 }
