@@ -3,7 +3,7 @@ import React from 'react';
 const AvailableSingle = ({item}) => (
   <div>
     <div>
-      <form>
+      <form className="searchBar">
         <div className="input-field">
           <input id="search" type="search" required/>
           <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
