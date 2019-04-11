@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
-import AvailableSingle from './AvailableSingle'
+//import AvailableSingle from './AvailableSingle'
 
 class Available extends Component {
     constructor(props) {
