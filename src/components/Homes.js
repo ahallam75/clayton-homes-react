@@ -11,7 +11,7 @@ class Homes extends Component {
     }
 
     componentDidMount() {
-      this.state.homes = getData()
+      this.state.homes = getData();
       // this.setState({
       //   homes: getData()
       // })

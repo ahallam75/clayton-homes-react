@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-//import AvailableSingle from './AvailableSingle'
+import AvailableSingle from './AvailableSingle'
 
 class Available extends Component {
     constructor(props) {
@@ -37,11 +37,11 @@ class Available extends Component {
         .catch((error) => console.log(error));
     }
 
-  // renderItems() {
-  //   return this.state.availableHomes.map((item) => (
-  //     <AvailableSingle key={item.Id} item={item} />
-  //   ));
-  // }
+  renderItems() {
+    return this.state.availableHomes.map((item) => (
+      <AvailableSingle key={item.Id} item={item} />
+    ));
+  }
 
   render() {
     return (
