@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
-import Homes from './components/Homes';
-import Available from './components/Available';
+import Homes from './Homes';
+import Available from './Available';
 
 class App extends Component {
   constructor(props) {
@@ -44,7 +44,7 @@ class App extends Component {
 
   render() {
 
-    const homes = this.homes;
+    //const homes = this.state.homes;
 
     return (
       <div className="row">
@@ -61,7 +61,7 @@ class App extends Component {
           <Route path="/Homes" component={Homes} />
           <Route path="/Available" component={Available} />
         </main>
-        <Homes homes={homes}/>
+        <Homes homes={this.state.homes}/>
       </div> 
     );
   }
