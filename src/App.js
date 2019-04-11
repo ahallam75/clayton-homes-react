@@ -1,12 +1,51 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
+import axios from 'axios';
 import './App.css';
 import Homes from './components/Homes';
-//import Landing from './components/Landing';
 import Available from './components/Available';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      homes: [],
+    };
+  }
+
+  componentDidMount() {
+    const url = process.env.REACT_APP_CLAYTON_HOMES_API_KEY 
+
+    // fetch(url)
+    // .then((response) => {
+    //   return response.json();
+    // })
+    // .then((data) => {
+    //   this.setState({
+    //     homes: data.Homes
+    //   })
+    // })
+    // .catch((error) => {
+    //   this.setState({
+    //     error: true
+    //   })
+    // });
+
+    axios.get(url)
+      .then((response) => {
+        this.setState({
+          homes: response.data.Homes
+        })
+      })
+      .catch((error) => console.log(error));
+  }  
+
+
+
   render() {
+
+    const homes = this.homes;
+
     return (
       <div className="row">
           <nav className="grey darken-2">
@@ -22,7 +61,7 @@ class App extends Component {
           <Route path="/Homes" component={Homes} />
           <Route path="/Available" component={Available} />
         </main>
-        <Homes />
+        <Homes homes={homes}/>
       </div> 
     );
   }
