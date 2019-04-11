@@ -31,6 +31,7 @@ class Homes extends Component {
       axios.get(url)
         .then((response) => {
           this.setState({
+            search: '',
             homes: response.data.Homes
           })
         })
@@ -43,13 +44,48 @@ class Homes extends Component {
     ));
   }
 
+  updateSearch(event) {
+    this.setState({search: event.target.value})
+  }
+
+  handleClick(event) {
+    console.log("do something on clicking button")
+  }
+
   render() {
+
+    let filteredHomes = this.state.homes.toLowerCase().filter((item) => {
+      return item.HomeId.indexOf(this.state.search.toLowerCase()) !== -1;
+    });
+
     return (
-      <div className="row">
-        {this.renderItems()}
+      <div>
+        <form>
+          <input type="text"
+            placeholder="search" 
+            value={this.state.search}
+            onChange={this.updateSearch.bind(this)}
+          />
+          <button onClick={(e) => this.handleClick(e)}>
+            Search
+          </button>
+        </form>
+        <ul>
+          {filteredHomes.map((item) => {
+            return <Homes homes={item} key={homes.Id} />
+          })}
+        </ul>
       </div>
     );
   }
 }
 
 export default Homes;
+
+//Older version
+
+// return (
+//   <div className="row">
+//     {this.renderItems()}
+//   </div>
+// );
