@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios';
 import AvailableSingle from './AvailableSingle'
 
@@ -37,11 +37,11 @@ class Available extends Component {
         .catch((error) => console.log(error));
     }
 
-  renderItems() {
-    return this.state.availableHomes.map((item) => (
-      <AvailableSingle key={item.Id} item={item} />
-    ));
-  }
+  // renderItems() {
+  //   return this.state.availableHomes.map((item) => (
+  //     <AvailableSingle key={item.Id} item={item} />
+  //   ));
+  // }
 
   render() {
     return (
