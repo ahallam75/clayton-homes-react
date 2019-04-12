@@ -1,7 +1,6 @@
 import React from 'react';
 
 const AvailableSingle = ({item}) => (
-  
   <div className="col s4">
     <div className="card">
       <div className="card-image">

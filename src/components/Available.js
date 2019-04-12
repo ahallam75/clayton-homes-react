@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import AvailableSingle from './AvailableSingle'
+import HomeSearch from './HomeSearch';
 
 class Available extends Component {
     constructor(props) {
@@ -46,6 +47,7 @@ class Available extends Component {
   render() {
     return (
       <div className="row">
+        <HomeSearch />
         {this.renderItems()}
       </div>
     );

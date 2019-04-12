@@ -44,8 +44,8 @@ class Homes extends Component {
     
     return (
       <div className="row">
+        <HomeSearch homes={this.state.filteredHomes} match={this.props.match} onChange={this.filterHomes} />
         {this.renderItems()}
-        <Homes homes={this.state.filteredHomes} match={this.props.match} onChange={this.filterHomes} />
       </div>
     );
   }

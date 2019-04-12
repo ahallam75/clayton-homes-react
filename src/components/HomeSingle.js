@@ -1,6 +1,7 @@
 import React from 'react';
 
 const HomeSingle = ({item}) => (
+  
   <div className="col s4">
     <div className="card">
       <div className="card-image">
@@ -16,6 +17,7 @@ const HomeSingle = ({item}) => (
       </div>
     </div>
   </div>
+  
 );
 
 export default HomeSingle;

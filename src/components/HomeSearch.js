@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 class HomeSearch extends Component {
   constructor(props) {
@@ -17,8 +17,8 @@ class HomeSearch extends Component {
   
   render() {
     return (
-      <div>
-        <label htmlFor="filter">Search for a home: </label>
+      <div className="container">
+        <label htmlFor="filter">Search for a Home: </label>
         <input type="text" id="filter" 
           value={this.state.homeFilter} 
           onChange={this.handleChange}/>
