@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import HomeSingle from './AvailableSingle';
-import getData from './UtilityAPI';
+import HomeSingle from './HomeSingle';
+import UtilityAPI from './UtilityAPI';
 
 class Homes extends Component {
     constructor(props) {
@@ -8,13 +8,18 @@ class Homes extends Component {
       this.state = {
         homes: [],
       };
+    // console.log(typeof UtilityAPI.getData())
+    // console.log(UtilityAPI.getData())
     }
 
+    
+
     componentDidMount() {
-      this.state.homes = getData();
-      // this.setState({
-      //   homes: getData()
-      // })
+      UtilityAPI.getData().then((homes) => {
+        this.setState({
+          homes: homes
+        })
+      });
     }
 
     renderItems() {
@@ -24,6 +29,7 @@ class Homes extends Component {
     }
        
   render() {
+    
     return (
       <div className="row">
         {this.renderItems()}
