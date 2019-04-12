@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import HomeSingle from './HomeSingle';
 import UtilityAPI from './UtilityAPI';
+import HomeSingle from './HomeSingle';
+import HomeSearch from './HomeSearch';
 
 class Homes extends Component {
     constructor(props) {
@@ -8,8 +9,6 @@ class Homes extends Component {
       this.state = {
         homes: [],
       };
-    // console.log(typeof UtilityAPI.getData())
-    // console.log(UtilityAPI.getData())
     }
 
     
@@ -17,9 +16,22 @@ class Homes extends Component {
     componentDidMount() {
       UtilityAPI.getData().then((homes) => {
         this.setState({
-          homes: homes
+          homes: homes,
+          filteredHomes: []
         })
       });
+    }
+
+    filterHomes = (homeFilter) => {
+      let filteredHomes = this.state.homes
+      filteredHomes = filteredHomes.filter((home) => {
+        let homeName = home.Description.toLowerCase()
+        return homeName.indexOf(
+          homeFilter.toLowerCase()) !== -1
+      })
+      this.setState({
+        filteredHomes
+      })
     }
 
     renderItems() {
@@ -33,6 +45,7 @@ class Homes extends Component {
     return (
       <div className="row">
         {this.renderItems()}
+        <Homes homes={this.state.filteredHomes} match={this.props.match} onChange={this.filterHomes} />
       </div>
     );
   }
