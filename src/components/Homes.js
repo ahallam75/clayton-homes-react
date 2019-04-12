@@ -7,7 +7,7 @@ class Homes extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        homes: [],
+        homes: []
       };
     }
 
@@ -23,7 +23,7 @@ class Homes extends Component {
     }
 
     filterHomes = (homeFilter) => {
-      let filteredHomes = this.state.homes
+      let filteredHomes = this.state.homes;
       filteredHomes = filteredHomes.filter((home) => {
         let homeName = home.Description.toLowerCase()
         return homeName.indexOf(
@@ -41,7 +41,8 @@ class Homes extends Component {
     }
        
   render() {
-    
+    console.log(this.state.filteredHomes)
+
     return (
       <div className="row">
         <HomeSearch homes={this.state.filteredHomes} match={this.props.match} onChange={this.filterHomes} />

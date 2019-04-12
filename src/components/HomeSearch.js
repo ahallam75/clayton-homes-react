@@ -12,10 +12,13 @@ class HomeSearch extends Component {
     this.setState({
       homeFilter: event.target.value
     })
+
     this.props.onChange(event.target.value)
   }
   
   render() {
+    
+
     return (
       <div className="container">
         <label htmlFor="filter">Search for a Home: </label>
