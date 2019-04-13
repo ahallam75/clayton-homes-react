@@ -9,6 +9,7 @@ class HomeSearch extends Component {
   }
 
   handleChange = (event) => {
+    event.preventDefault();
     this.setState({
       homeFilter: event.target.value
     })
@@ -21,7 +22,7 @@ class HomeSearch extends Component {
 
     return (
       <div className="container">
-        <label htmlFor="filter">Search for a Home: </label>
+        <label id="label" htmlFor="filter">Search for a Home: </label>
         <input type="text" id="filter" 
           value={this.state.homeFilter} 
           onChange={this.handleChange}/>

@@ -15,7 +15,6 @@ const HomeSingle = ({item}) => (
           Features:
           <li>{item.Features}</li>
         </ul>
-
       </div>
       <div className="card-action">
         <a href={item.ThumbnailImage} target="_blank" rel="noopener noreferrer">Click for Full Image</a>

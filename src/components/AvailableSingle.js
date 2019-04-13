@@ -8,8 +8,8 @@ const AvailableSingle = ({item}) => (
         <span className="card-title">{item.Description}</span>
       </div>
       <div className="card-content">
-        <p>{item.Description}</p>
-        <p>{item.HomeId}</p>
+        <p>Name: {item.Description}</p>
+        <p>Model Number: {item.HomeId}</p>
       </div>
       <div className="card-action">
         <a href={item.ThumbnailImage} target="_blank" rel="noopener noreferrer">Click for Full Image</a>
