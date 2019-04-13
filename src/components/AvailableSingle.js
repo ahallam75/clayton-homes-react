@@ -2,7 +2,7 @@ import React from 'react';
 
 const AvailableSingle = ({item}) => (
   <div className="col s4">
-    <div className="card">
+    <div className="card large">
       <div className="card-image">
         <img src={item.ThumbnailImage} alt={item.Description}/>
         <span className="card-title">{item.Description}</span>

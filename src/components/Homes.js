@@ -15,7 +15,7 @@ class Homes extends Component {
       UtilityAPI.getData().then((homes) => {
         this.setState({
           homes: homes,
-          filteredHomes: []
+          filteredHomes: homes
         })
       });
     }
@@ -50,13 +50,11 @@ class Homes extends Component {
 
 
     renderHomes() {
-      console.log(this.state.filteredHomes)
-
       if (this.state.filteredHomes) {
           return this.state.filteredHomes.map((item) => (
           <HomeSingle key={item.Id} item={item} />
           ));
-       } else if (!this.state.filterdHomes) {
+       } else if (this.state.homes) {
           return this.state.homes.map((item) => (
           <HomeSingle key={item.Id} item={item} />
         ));
@@ -68,6 +66,7 @@ class Homes extends Component {
     return (
       <div className="row">
         <HomeSearch homes={this.state.filteredHomes} match={this.props.match} onChange={this.filterHomes} />
+        <h6>Homes in Inventory</h6>
         {this.renderHomes()}
       </div>
     );

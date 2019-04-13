@@ -15,7 +15,7 @@ class Available extends Component {
       UtilityAPI.getData().then((homes) => {
         this.setState({
           homes: homes,
-          filteredHomes: []
+          filteredHomes: homes
         })
       });
     }
@@ -67,6 +67,7 @@ class Available extends Component {
     return (
       <div className="row">
         <HomeSearch homes={this.state.filteredHomes} match={this.props.match} onChange={this.filterHomes} />
+        <h6>Available Homes</h6>
         {this.renderHomes()}
       </div>
     );

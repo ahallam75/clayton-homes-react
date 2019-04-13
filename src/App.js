@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Redirect } from 'react-router-dom';
 import './App.css';
 import Homes from './components/Homes';
 import Available from './components/Available';
@@ -19,6 +19,9 @@ class App extends Component {
             </div>
           </nav>
         <main>
+          <Route exact path="/" render={() => (
+            <Redirect to="/Homes"/>
+            )}/>
           <Route path="/Homes" component={Homes} />
           <Route path="/Available" component={Available} />
         </main>
