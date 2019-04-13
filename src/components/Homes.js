@@ -24,13 +24,17 @@ class Homes extends Component {
       let filteredHomes = this.state.homes;
       filteredHomes = filteredHomes.filter((home) => {
         let homeName = home.Description.toLowerCase()
-        return homeName.indexOf(
-          homeFilter.toLowerCase()) !== -1
+        let model = home.HomeId.toLowerCase()
+        //let features = home.features.toLowerCase()
+        return homeName.indexOf(homeFilter.toLowerCase()) !== -1 || model.indexOf(homeFilter.toLowerCase()) !== -1 //|| features.indexOf(homeFilter.toLowerCase()) !== -1
       })
       this.setState({
         filteredHomes
       })
     }
+
+    
+  
 
     // renderItems() {
     //   return this.state.homes.map((item) => (
@@ -46,11 +50,13 @@ class Homes extends Component {
 
 
     renderHomes() {
+      console.log(this.state.filteredHomes)
+
       if (this.state.filteredHomes) {
           return this.state.filteredHomes.map((item) => (
           <HomeSingle key={item.Id} item={item} />
           ));
-       } else {
+       } else if (!this.state.filterdHomes) {
           return this.state.homes.map((item) => (
           <HomeSingle key={item.Id} item={item} />
         ));
@@ -58,7 +64,6 @@ class Homes extends Component {
     }
        
   render() {
-    console.log(this.state.filteredHomes)
 
     return (
       <div className="row">
