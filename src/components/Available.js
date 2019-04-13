@@ -49,8 +49,6 @@ class Available extends Component {
 
 
     renderHomes() {
-      console.log(this.state.filteredHomes)
-
       if (this.state.filteredHomes) {
           return this.state.filteredHomes.map((item) => (
           <AvailableSingle key={item.Id} item={item} />
