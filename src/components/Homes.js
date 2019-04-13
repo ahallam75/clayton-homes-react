@@ -32,10 +32,29 @@ class Homes extends Component {
       })
     }
 
-    renderItems() {
-      return this.state.homes.map((item) => (
-        <HomeSingle key={item.Id} item={item} />
-      ));
+    // renderItems() {
+    //   return this.state.homes.map((item) => (
+    //     <HomeSingle key={item.Id} item={item} />
+    //   ));
+    // }
+
+    // renderFilteredHomes() {
+    //   return this.state.filteredHomes.map((item) => (
+    //     <HomeSingle key={item.Id} item={item} />
+    //   ));
+    // }
+
+
+    renderHomes() {
+      if (this.state.filteredHomes) {
+          return this.state.filteredHomes.map((item) => (
+          <HomeSingle key={item.Id} item={item} />
+          ));
+       } else {
+          return this.state.homes.map((item) => (
+          <HomeSingle key={item.Id} item={item} />
+        ));
+       }
     }
        
   render() {
@@ -44,7 +63,7 @@ class Homes extends Component {
     return (
       <div className="row">
         <HomeSearch homes={this.state.filteredHomes} match={this.props.match} onChange={this.filterHomes} />
-        {this.renderItems()}
+        {this.renderHomes()}
       </div>
     );
   }
