@@ -11,7 +11,7 @@ class App extends Component {
       <div className="row">
           <nav className="grey darken-2">
             <div className="nav-wrapper">   
-              <ul className="hide-on-med-and-down left"> 
+              <ul className="left hide-on-med-and-down"> 
                 <li><a href="/" className="brand-logo center white-text">Clayton Homes</a></li>             
                 <li><Link to='/Homes'>Inventory</Link></li>
                 <li><Link to='/Available'>Availabile</Link></li>                              

@@ -32,28 +32,12 @@ class Available extends Component {
       })
     }
 
-    
-  
-
-    // renderItems() {
-    //   return this.state.homes.map((item) => (
-    //     <HomeSingle key={item.Id} item={item} />
-    //   ));
-    // }
-
-    // renderFilteredHomes() {
-    //   return this.state.filteredHomes.map((item) => (
-    //     <HomeSingle key={item.Id} item={item} />
-    //   ));
-    // }
-
-
     renderHomes() {
       if (this.state.filteredHomes) {
           return this.state.filteredHomes.map((item) => (
           <AvailableSingle key={item.Id} item={item} />
           ));
-       } else if (!this.state.filterdHomes) {
+       } else if (this.state.homes) {
           return this.state.homes.map((item) => (
           <AvailableSingle key={item.Id} item={item} />
         ));
@@ -61,11 +45,10 @@ class Available extends Component {
     }
        
   render() {
-
     return (
       <div className="row">
         <HomeSearch homes={this.state.filteredHomes} match={this.props.match} onChange={this.filterHomes} />
-        <h6>Available Homes</h6>
+        <h5>Available Homes</h5>
         {this.renderHomes()}
       </div>
     );
@@ -73,64 +56,3 @@ class Available extends Component {
 }
 
 export default Available;
-
-
-
-
-// import React, { Component } from 'react';
-// import axios from 'axios';
-// import AvailableSingle from './AvailableSingle'
-// import HomeSearch from './HomeSearch';
-
-// class Available extends Component {
-//     constructor(props) {
-//       super(props);
-//       this.state = {
-//         availableHomes: [],
-//       };
-//     }
-
-//     componentDidMount() {
-//       const url = process.env.REACT_APP_CLAYTON_HOMES_API_KEY 
-
-//       // fetch(url)
-//       // .then((response) => {
-//       //   return response.json();
-//       // })
-//       // .then((data) => {
-//       //   this.setState({
-//       //     homes: data.Homes
-//       //   })
-//       // })
-//       // .catch((error) => {
-//       //   this.setState({
-//       //     error: true
-//       //   })
-//       // });
-
-//       axios.get(url)
-//         .then((response) => {
-//           this.setState({
-//             availableHomes: response.data.Homes
-//           })
-//         })
-//         .catch((error) => console.log(error));
-//     }
-
-//   renderItems() {
-//     return this.state.availableHomes.map((item) => (
-//       <AvailableSingle key={item.Id} item={item} />
-//     ));
-//   }
-
-//   render() {
-//     return (
-//       <div className="row">
-//         <HomeSearch />
-//         {this.renderItems()}
-//       </div>
-//     );
-//   }
-// }
-
-// export default Available;

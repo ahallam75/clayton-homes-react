@@ -11,10 +11,6 @@ const HomeSingle = ({item}) => (
       <div className="card-content">
         <p>Name: {item.Description}</p>
         <p>Serial Number: {item.HomeId}</p>
-        <ul>
-          Features:
-          <li>{item.Features}</li>
-        </ul>
       </div>
       <div className="card-action">
         <a href={item.ThumbnailImage} target="_blank" rel="noopener noreferrer">Click for Full Image</a>

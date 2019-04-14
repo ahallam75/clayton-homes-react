@@ -20,7 +20,7 @@ class HomeSearch extends Component {
   render() {
     return (
       <div className="container">
-        <label id="label" htmlFor="filter">Search for a Home: </label>
+        <label id="label" htmlFor="filter"><h6>Search for a Home:</h6></label>
         <input type="text" id="filter" placeholder="Enter Home Name or Serial/Model Number"
           value={this.state.homeFilter} 
           onChange={this.handleChange}/>
