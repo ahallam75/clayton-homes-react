@@ -16,7 +16,7 @@ class Homes extends Component {
       UtilityAPI.getData().then((homes) => {
         this.setState({
           homes: homes,
-          filteredHomes: homes
+          filteredHomes: this.state.homes.IsModel === false
         })
       });
     }
@@ -26,7 +26,7 @@ class Homes extends Component {
       filteredHomes = filteredHomes.filter((home) => {
         let homeName = home.Description.toLowerCase()
         let model = home.HomeId.toLowerCase()
-        return homeName.indexOf(homeFilter.toLowerCase()) !== -1 || model.indexOf(homeFilter.toLowerCase()) !== -1 
+        return ((homeName.indexOf(homeFilter.toLowerCase()) !== -1 || model.indexOf(homeFilter.toLowerCase()) !== -1) && home.IsModel === false)
       })
       this.setState({
         filteredHomes
@@ -34,16 +34,41 @@ class Homes extends Component {
     }
 
     renderHomes() {
+      console.log(this.state.filteredHomes)
       if (this.state.filteredHomes) {
           return this.state.filteredHomes.map((item) => (
           <HomeSingle key={item.Id} item={item} />
           ));
-       } else if (this.state.homes) {
-          return this.state.homes.map((item) => (
+       } else {
+          return this.state.homes.filter((home) => home.IsModel === false).map((item) => (
           <HomeSingle key={item.Id} item={item} />
         ));
        }
     }
+
+    // renderHomes() {
+    //   if (this.state.filteredHomes) {
+    //       return this.state.filteredHomes.map((item) => (
+    //       <HomeSingle key={item.Id} item={item} />
+    //       ));
+    //    } else if (this.state.homes) {
+    //       return this.state.homes.map((item) => (
+    //       <HomeSingle key={item.Id} item={item} />
+    //     ));
+    //    }
+    // }
+
+    // renderHomes() {
+    //   if (this.state.homes || !this.state.filteredHomes) {
+    //     return this.state.homes.filter( (home) => home.IsModel === false).map((item) => (
+    //     <HomeSingle key={item.Id} item={item} />
+    //   ));
+    //     } else if (this.state.filteredHomes) {
+    //       return this.state.filteredHomes.map((item) => (
+    //       <HomeSingle key={item.Id} item={item} />
+    //       ));
+    //    } 
+    // }
        
   render() {
     return (
