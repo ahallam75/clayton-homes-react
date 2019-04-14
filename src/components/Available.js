@@ -7,7 +7,8 @@ class Available extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        homes: []
+        homes: [],
+        filteredHomes: null
       };
     }
 
@@ -32,18 +33,35 @@ class Available extends Component {
       })
     }
 
+    // data.Homes.filter( (home) => home.IsModel).map( (home) => {
+    //   console.log(home);
+    // });
+
+    // renderHomes() {
+    //   // if (this.state.filteredHomes) {
+    //   //     return this.state.filteredHomes.map((item) => (
+    //   //     <AvailableSingle key={item.Id} item={item} />
+    //   //     ));
+    //   //  } else if (this.state.homes) {
+    //       return this.state.homes.filter( (home) => home.IsModel === true).map((item) => (
+    //       <AvailableSingle key={item.Id} item={item} />
+    //     ));
+    //    }
+    // // }
+
     renderHomes() {
-      if (this.state.filteredHomes) {
+      if (this.state.homes || !this.state.filteredHomes) {
+        return this.state.homes.filter( (home) => home.IsModel === true).map((item) => (
+        <AvailableSingle key={item.Id} item={item} />
+      ));
+        } else if (this.state.filteredHomes) {
           return this.state.filteredHomes.map((item) => (
           <AvailableSingle key={item.Id} item={item} />
           ));
-       } else if (this.state.homes) {
-          return this.state.homes.map((item) => (
-          <AvailableSingle key={item.Id} item={item} />
-        ));
-       }
+       } 
     }
        
+    
   render() {
     return (
       <div className="row">

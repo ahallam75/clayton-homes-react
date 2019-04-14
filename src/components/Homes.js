@@ -7,7 +7,8 @@ class Homes extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        homes: []
+        homes: [],
+        filteredHomes: null
       };
     }
 
