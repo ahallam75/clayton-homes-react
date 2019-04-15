@@ -6,7 +6,6 @@ import Available from './components/Available';
 
 class App extends Component {
   render() {
-
     return (
       <div className="row">
           <nav className="grey darken-2">

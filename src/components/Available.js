@@ -29,53 +29,26 @@ class Available extends Component {
         return ((homeName.indexOf(homeFilter.toLowerCase()) !== -1 || model.indexOf(homeFilter.toLowerCase()) !== -1) && home.IsModel === true)
       })
       this.setState({
-        filteredHomes: filteredHomes
+        filteredHomes
       })
     }
-
-    // data.Homes.filter( (home) => home.IsModel).map( (home) => {
-    //   console.log(home);
-    // });
-
-    // renderHomes() {
-    //   if (this.state.filteredHomes) {
-    //       return this.state.filteredHomes.map((item) => (
-    //       <AvailableSingle key={item.Id} item={item} />
-    //       ));
-    //    } else {
-    //       return this.state.homes.filter( (home) => home.IsModel === true).map((item) => (
-    //       <AvailableSingle key={item.Id} item={item} />
-    //     ));
-    //    }
-    // }
-
-    // renderHomes() {
-
-    //   if (this.state.homes) {
-    //     return this.state.homes.filter( (home) => home.IsModel).map((item) => (
-    //     <AvailableSingle key={item.Id} item={item} />
-    //   ));
-    //     } else if (this.state.filteredHomes) {
-    //       return this.state.filteredHomes.map((item) => (
-    //       <AvailableSingle key={item.Id} item={item} />
-    //       ));
-    //    } 
-    // }
-
+        
     renderHomes() {
-      console.log(this.state.filteredHomes)
       if (this.state.filteredHomes) {
           return this.state.filteredHomes.map((item) => (
           <AvailableSingle key={item.Id} item={item} />
           ));
        } else {
-          return this.state.homes.filter((home) => home.IsModel === true ).map((item) => (
+          return this.state.homes.filter((home) => home.IsModel === true).sort(function(a, b){
+            if(a.Description < b.Description) { return -1; }
+            if(a.Description > b.Description) { return 1; }
+            return 0;
+        }).map((item) => (
           <AvailableSingle key={item.Id} item={item} />
         ));
        }
     }
-       
-    
+
   render() {
     return (
       <div className="row">

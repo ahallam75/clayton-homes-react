@@ -34,47 +34,26 @@ class Homes extends Component {
     }
 
     renderHomes() {
-      console.log(this.state.filteredHomes)
       if (this.state.filteredHomes) {
           return this.state.filteredHomes.map((item) => (
           <HomeSingle key={item.Id} item={item} />
           ));
        } else {
-          return this.state.homes.filter((home) => home.IsModel === false).map((item) => (
+          return this.state.homes.filter((home) => home.IsModel === false).sort(function(a, b){
+            if(a.Description < b.Description) { return -1; }
+            if(a.Description > b.Description) { return 1; }
+            return 0;
+        }).map((item) => (
           <HomeSingle key={item.Id} item={item} />
         ));
        }
     }
-
-    // renderHomes() {
-    //   if (this.state.filteredHomes) {
-    //       return this.state.filteredHomes.map((item) => (
-    //       <HomeSingle key={item.Id} item={item} />
-    //       ));
-    //    } else if (this.state.homes) {
-    //       return this.state.homes.map((item) => (
-    //       <HomeSingle key={item.Id} item={item} />
-    //     ));
-    //    }
-    // }
-
-    // renderHomes() {
-    //   if (this.state.homes || !this.state.filteredHomes) {
-    //     return this.state.homes.filter( (home) => home.IsModel === false).map((item) => (
-    //     <HomeSingle key={item.Id} item={item} />
-    //   ));
-    //     } else if (this.state.filteredHomes) {
-    //       return this.state.filteredHomes.map((item) => (
-    //       <HomeSingle key={item.Id} item={item} />
-    //       ));
-    //    } 
-    // }
-       
+ 
   render() {
     return (
       <div className="row">
         <HomeSearch homes={this.state.filteredHomes} match={this.props.match} onChange={this.filterHomes} />
-        <h5>Homes in Inventory</h5>
+        <h5>Inventory Homes</h5>
         {this.renderHomes()}
       </div>
     );
